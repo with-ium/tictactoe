@@ -30,9 +30,21 @@ public class tictactoe {
 
             // Player input
             do {
-                System.out.println("\nPlayer " + player + ", enter your spot " + letter + ": ");
-                choice = sc.nextInt(); sc.nextLine();
+                if (turn < 8) {
+                    System.out.println("\nPlayer " + player + ", enter your spot " + letter + ": ");
+                    choice = sc.nextInt(); sc.nextLine();
+                }
+                else {
+                    for (int i = 0; i < 3; i++) {
+                        for (int j = 0; j < 3; j++) {
+                            if (board[i][j] != 'X' && board[i][j] != 'O') {
+                                choice = Character.getNumericValue(board[i][j]);
 
+                            }
+                        }
+                    }
+                }
+                
                 row = --choice / 3;
                 col = choice % 3;
             } while (choice < 0 || choice > 9 || board[row][col] > '9');
